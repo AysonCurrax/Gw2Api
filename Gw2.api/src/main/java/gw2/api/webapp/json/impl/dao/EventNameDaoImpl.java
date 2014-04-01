@@ -1,7 +1,7 @@
-package gw2.api.webapp.persistence.impl.dao;
+package gw2.api.webapp.json.impl.dao;
 
-import gw2.api.webapp.persistence.api.dao.EventNameDao;
-import gw2.api.webapp.persistence.api.domain.EventName;
+import gw2.api.webapp.json.api.dao.EventNameDao;
+import gw2.api.webapp.json.api.domain.EventName;
 
 import java.io.IOException;
 import java.util.ArrayList;

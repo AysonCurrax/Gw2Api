@@ -2,8 +2,8 @@ package gw2.api.webapp.controller;
 
 import java.util.List;
 
-import gw2.api.webapp.persistence.api.dao.EventDao;
-import gw2.api.webapp.persistence.api.domain.Event;
+import gw2.api.webapp.json.api.dao.EventDao;
+import gw2.api.webapp.json.api.domain.Event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

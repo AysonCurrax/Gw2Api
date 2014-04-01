@@ -1,4 +1,4 @@
-package gw2.api.webapp.persistence.api.domain;
+package gw2.api.webapp.json.api.domain;
 
 public class WorldName {
 

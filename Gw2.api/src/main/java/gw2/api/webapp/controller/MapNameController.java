@@ -2,8 +2,8 @@ package gw2.api.webapp.controller;
 
 import java.util.List;
 
-import gw2.api.webapp.persistence.api.dao.MapNameDao;
-import gw2.api.webapp.persistence.api.domain.MapName;
+import gw2.api.webapp.json.api.dao.MapNameDao;
+import gw2.api.webapp.json.api.domain.MapName;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

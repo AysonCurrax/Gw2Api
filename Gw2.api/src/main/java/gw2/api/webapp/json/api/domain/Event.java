@@ -1,4 +1,4 @@
-package gw2.api.webapp.persistence.api.domain;
+package gw2.api.webapp.json.api.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;

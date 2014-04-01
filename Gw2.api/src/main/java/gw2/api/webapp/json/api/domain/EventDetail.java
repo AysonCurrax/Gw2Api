@@ -1,4 +1,4 @@
-package gw2.api.webapp.persistence.api.domain;
+package gw2.api.webapp.json.api.domain;
 
 import java.util.List;
 
@@ -82,7 +82,7 @@ public class EventDetail {
 		private float rotation;
 		
 		@JsonProperty("z_range")
-		private float[] zRange;
+		private float[] z_range;
 		
 		@JsonProperty("points")
 		private List<Float[]> points;
@@ -127,12 +127,12 @@ public class EventDetail {
 			this.rotation = rotation;
 		}
 		
-		public float[] getZRange() {
-			return zRange;
+		public float[] getZ_range() {
+			return z_range;
 		}
 		
-		public void setZRange(float[] zRange) {
-			this.zRange = zRange;
+		public void setZ_range(float[] z_range) {
+			this.z_range = z_range;
 		}
 		
 		public List<Float[]> getPoints() {

@@ -1,4 +1,4 @@
-package gw2.api.webapp.persistence.impl.dao;
+package gw2.api.webapp.json.impl.dao;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import org.springframework.web.client.RestTemplate;
 
-import gw2.api.webapp.persistence.api.dao.EventDao;
-import gw2.api.webapp.persistence.api.domain.Event;
+import gw2.api.webapp.json.api.dao.EventDao;
+import gw2.api.webapp.json.api.domain.Event;
 
 public class EventDaoImpl implements EventDao{
 

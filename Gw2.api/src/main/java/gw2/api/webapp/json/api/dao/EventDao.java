@@ -1,6 +1,6 @@
-package gw2.api.webapp.persistence.api.dao;
+package gw2.api.webapp.json.api.dao;
 
-import gw2.api.webapp.persistence.api.domain.Event;
+import gw2.api.webapp.json.api.domain.Event;
 
 import java.util.List;
 
