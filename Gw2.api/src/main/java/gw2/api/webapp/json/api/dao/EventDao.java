@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface EventDao {
 
+	List<Event> getAllEvents();
+	
 	List<Event> getEventsByWorld(int worldId);
 	
 	List<Event> getEventsByWorldAndMap(int worldId, int mapId);

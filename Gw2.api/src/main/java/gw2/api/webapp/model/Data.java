@@ -1,21 +1,64 @@
 package gw2.api.webapp.model;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.annotation.PostConstruct;
 
 import gw2.api.services.api.ServiceFacade;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 
 public class Data {
 
 	@Autowired
-	ServiceFacade services;
+	private ServiceFacade services;
 	
+	private ExecutorService pool = Executors.newFixedThreadPool(4);
+	
+	public enum Service {
+		WORLDNAMES,
+		MAPNAMES,
+		EVENTNAMES,
+		EVENTS,
+		EVENTDETAILS;
+	}
+	private class RunService implements Runnable {
+		
+		private Service serv;
+		
+		public RunService(Service serv) {
+			this.serv = serv;
+		}
+		public void run() {
+			switch(serv) {
+				case WORLDNAMES:
+					setWorldNames(services.getAllWorldNames(lang));
+					System.out.println("worldnames: "+worldNames.size());
+					break;
+				case MAPNAMES:
+					setMapNames(services.getAllMapNames(lang));
+					System.out.println("mapnames: "+mapNames.size());
+					break;
+				case EVENTNAMES:
+					setEventNames(services.getAllEventNames(lang));
+					System.out.println("eventnames: "+eventNames.size());
+					break;
+				case EVENTS:
+					setEvents(services.getEventsByWorld(2201));
+					System.out.println("events: "+events.size()+" updated." + new Date());
+					break;
+				case EVENTDETAILS:
+					setEventDetails(services.getAllEventDetails(lang));
+					System.out.println("eventdetails: "+eventDetails.size());
+			}
+		}
+	}
 	private String lang = "de";
-	private int worldId = 2201;
 	
 	private List<WorldName> worldNames;
 	private List<MapName> mapNames;
@@ -63,13 +106,29 @@ public class Data {
 		this.eventDetails = eventDetails;
 	}
 	
+	public ServiceFacade getServices() {
+		return services;
+	}
+	
+	public void setServices(ServiceFacade services) {
+		this.services = services;
+	}
+	
 	@PostConstruct
-	public void init() {
-		setWorldNames(services.getAllWorldNames(lang));
-		setMapNames(services.getAllMapNames(lang));
-		setEventNames(services.getAllEventNames(lang));
-		setEvents(services.getEventsByWorld(worldId));
-		setEventDetails(services.getAllEventDetails(lang));
+	private void init() {
+		pool = Executors.newFixedThreadPool(4);
+		pool.submit(new RunService(Service.WORLDNAMES));
+		pool.submit(new RunService(Service.MAPNAMES));
+		pool.submit(new RunService(Service.EVENTNAMES));
+		//pool.submit(new RunService(Service.EVENTS));
+		pool.submit(new RunService(Service.EVENTDETAILS));
 		System.out.println("Initialization complete.");
+		//pool.shutdown();
+	}
+	
+	@Scheduled(fixedRate=1000)
+	public void updateEvents() {
+		pool.submit(new RunService(Service.EVENTS));
+		System.out.println("Events updated.");
 	}
 }

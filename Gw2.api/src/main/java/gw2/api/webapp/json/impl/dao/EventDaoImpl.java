@@ -15,6 +15,12 @@ import gw2.api.webapp.model.Event;
 
 public class EventDaoImpl implements EventDao{
 
+	public List<Event> getAllEvents() {
+		List<Event> events = new ArrayList<Event>();
+		events = sendRequest(null);
+		return events;
+	}
+	
 	public List<Event> getEventsByWorld(int worldId) {
 		List<Event> events = new ArrayList<Event>();
 		String params = "?world_id=" + worldId;
@@ -39,7 +45,9 @@ public class EventDaoImpl implements EventDao{
 	public List<Event> sendRequest(String params) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("https://api.guildwars2.com/v1/events.json");
-		builder.append(params);
+		if(params!=null) {
+			builder.append(params);
+		}
 		String url = builder.toString();
 		List<Event> result = new ArrayList<Event>();
 		RestTemplate rest = new RestTemplate();

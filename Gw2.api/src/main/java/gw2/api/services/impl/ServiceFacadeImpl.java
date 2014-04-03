@@ -65,6 +65,11 @@ public class ServiceFacadeImpl implements ServiceFacade{
 	}
 	
 	@Override
+	public List<Event> getAllEvents() {
+		return eventDao.getAllEvents();
+	}
+	
+	@Override
 	public List<Event> getEventsByWorld(int worldId) {
 		return eventDao.getEventsByWorld(worldId);
 	}
