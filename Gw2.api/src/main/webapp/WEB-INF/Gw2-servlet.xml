@@ -20,9 +20,12 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<bean class="gw2.api.webapp.persistence.impl.dao.WorldNameDaoImpl"/>
-	<bean class="gw2.api.webapp.persistence.impl.dao.MapNameDaoImpl"/>
-	<bean class="gw2.api.webapp.persistence.impl.dao.EventNameDaoImpl"/>
-	<bean class="gw2.api.webapp.persistence.impl.dao.EventDaoImpl"/>
-	<bean class="gw2.api.webapp.persistence.impl.dao.EventDetailDaoImpl"/>
+	<bean class="gw2.api.webapp.json.impl.dao.WorldNameDaoImpl"/>
+	<bean class="gw2.api.webapp.json.impl.dao.MapNameDaoImpl"/>
+	<bean class="gw2.api.webapp.json.impl.dao.EventNameDaoImpl"/>
+	<bean class="gw2.api.webapp.json.impl.dao.EventDaoImpl"/>
+	<bean class="gw2.api.webapp.json.impl.dao.EventDetailDaoImpl"/>
+	
+	<bean class="gw2.api.webapp.model.Data"/>
+	<bean class="gw2.api.services.impl.ServiceFacadeImpl"/>
 </beans>

@@ -3,7 +3,7 @@ package gw2.api.webapp.controller;
 import java.util.List;
 
 import gw2.api.webapp.json.api.dao.WorldNameDao;
-import gw2.api.webapp.json.api.domain.WorldName;
+import gw2.api.webapp.model.WorldName;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +28,8 @@ public class WorldNameController {
 	
 	@RequestMapping(value = "/{lang}/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public WorldName getWorldNameById(@PathVariable String lang, @PathVariable String id) {
-		WorldName result = dao.getWorldNameById(lang, id);
+	public List<WorldName> getWorldNameById(@PathVariable String lang, @PathVariable String id) {
+		List<WorldName> result = dao.getWorldNameById(lang, id);
 		return result;
 	}
 }

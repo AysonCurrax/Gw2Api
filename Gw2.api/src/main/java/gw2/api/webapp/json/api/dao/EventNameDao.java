@@ -1,6 +1,6 @@
 package gw2.api.webapp.json.api.dao;
 
-import gw2.api.webapp.json.api.domain.EventName;
+import gw2.api.webapp.model.EventName;
 
 import java.util.List;
 
@@ -8,5 +8,5 @@ public interface EventNameDao {
 
 	List<EventName> getAllEventNames(String lang);
 	
-	EventName getEventNameById(String lang, String id);
+	List<EventName> getEventNameById(String lang, String id);
 }

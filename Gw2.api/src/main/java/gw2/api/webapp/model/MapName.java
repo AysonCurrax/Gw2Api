@@ -1,6 +1,6 @@
-package gw2.api.webapp.json.api.domain;
+package gw2.api.webapp.model;
 
-public class WorldName {
+public class MapName {
 
 	private String id;
 	

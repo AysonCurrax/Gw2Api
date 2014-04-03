@@ -11,7 +11,7 @@ import org.codehaus.jackson.type.TypeReference;
 import org.springframework.web.client.RestTemplate;
 
 import gw2.api.webapp.json.api.dao.MapNameDao;
-import gw2.api.webapp.json.api.domain.MapName;
+import gw2.api.webapp.model.MapName;
 
 public class MapNameDaoImpl implements MapNameDao{
 
@@ -21,15 +21,16 @@ public class MapNameDaoImpl implements MapNameDao{
 		return mapNames;
 	}
 	
-	public MapName getMapNameById(String lang, String id) {
+	public List<MapName> getMapNameById(String lang, String id) {
 		List<MapName> mapNames = new ArrayList<MapName>();
+		List<MapName> result = new ArrayList<MapName>();
 		mapNames = sendRequest(lang);
 		for(MapName mapName : mapNames) {
 			if(mapName.getId().equals(id)) {
-				return mapName;
+				result.add(mapName);
 			}
 		}
-		return null;
+		return result;
 	}
 	
 	public List<MapName> sendRequest(String lang) {

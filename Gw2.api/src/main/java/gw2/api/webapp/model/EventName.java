@@ -1,4 +1,4 @@
-package gw2.api.webapp.json.api.domain;
+package gw2.api.webapp.model;
 
 public class EventName {
 

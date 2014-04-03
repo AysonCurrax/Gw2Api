@@ -1,7 +1,7 @@
 package gw2.api.webapp.json.impl.dao;
 
 import gw2.api.webapp.json.api.dao.EventNameDao;
-import gw2.api.webapp.json.api.domain.EventName;
+import gw2.api.webapp.model.EventName;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,15 +21,16 @@ public class EventNameDaoImpl implements EventNameDao{
 		return eventNames;
 	}
 	
-	public EventName getEventNameById(String lang, String id) {
+	public List<EventName> getEventNameById(String lang, String id) {
 		List<EventName> eventNames = new ArrayList<EventName>();
+		List<EventName> result = new ArrayList<EventName>();
 		eventNames = sendRequest(lang);
 		for(EventName eventName : eventNames) {
 			if(eventName.getId().equals(id)) {
-				return eventName;
+				result.add(eventName);
 			}
 		}
-		return null;
+		return result;
 	}
 	
 	public List<EventName> sendRequest(String lang) {

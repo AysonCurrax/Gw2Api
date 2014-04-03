@@ -3,7 +3,7 @@ package gw2.api.webapp.controller;
 import java.util.Map;
 
 import gw2.api.webapp.json.api.dao.EventDetailDao;
-import gw2.api.webapp.json.api.domain.EventDetail;
+import gw2.api.webapp.model.EventDetail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

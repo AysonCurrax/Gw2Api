@@ -11,7 +11,7 @@ import org.codehaus.jackson.type.TypeReference;
 import org.springframework.web.client.RestTemplate;
 
 import gw2.api.webapp.json.api.dao.EventDetailDao;
-import gw2.api.webapp.json.api.domain.EventDetail;
+import gw2.api.webapp.model.EventDetail;
 
 public class EventDetailDaoImpl implements EventDetailDao{
 

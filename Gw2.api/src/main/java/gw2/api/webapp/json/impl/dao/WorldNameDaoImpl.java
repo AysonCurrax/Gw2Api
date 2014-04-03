@@ -11,7 +11,7 @@ import org.codehaus.jackson.type.TypeReference;
 import org.springframework.web.client.RestTemplate;
 
 import gw2.api.webapp.json.api.dao.WorldNameDao;
-import gw2.api.webapp.json.api.domain.WorldName;
+import gw2.api.webapp.model.WorldName;
 
 public class WorldNameDaoImpl implements WorldNameDao{
 
@@ -21,15 +21,16 @@ public class WorldNameDaoImpl implements WorldNameDao{
 		return worldNames;
 	}
 	
-	public WorldName getWorldNameById(String lang, String id) {
+	public List<WorldName> getWorldNameById(String lang, String id) {
 		List<WorldName> worldNames = new ArrayList<WorldName>();
+		List<WorldName> result = new ArrayList<WorldName>();
 		worldNames = sendRequest(lang);
 		for(WorldName worldName : worldNames) {
 			if(worldName.getId().equals(id)) {
-				return worldName;
+				result.add(worldName);
 			}
 		}
-		return null;
+		return result;
 	}
 	
 	public List<WorldName> sendRequest(String lang) {

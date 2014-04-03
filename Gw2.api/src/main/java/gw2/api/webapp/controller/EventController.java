@@ -3,7 +3,7 @@ package gw2.api.webapp.controller;
 import java.util.List;
 
 import gw2.api.webapp.json.api.dao.EventDao;
-import gw2.api.webapp.json.api.domain.Event;
+import gw2.api.webapp.model.Event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,8 +35,8 @@ public class EventController {
 	
 	@RequestMapping(value = "/{worldId}/{mapId}/{eventId}")
 	@ResponseBody
-	public Event getEventByWorldAndMapAndEvent(@PathVariable int worldId, @PathVariable int mapId, @PathVariable String eventId) {
-		Event result = dao.getEventByWorldAndMapAndEvent(worldId, mapId, eventId);
+	public List<Event> getEventByWorldAndMapAndEvent(@PathVariable int worldId, @PathVariable int mapId, @PathVariable String eventId) {
+		List<Event> result = dao.getEventByWorldAndMapAndEvent(worldId, mapId, eventId);
 		return result;
 	}
 }

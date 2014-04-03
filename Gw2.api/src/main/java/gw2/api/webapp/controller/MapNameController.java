@@ -3,7 +3,7 @@ package gw2.api.webapp.controller;
 import java.util.List;
 
 import gw2.api.webapp.json.api.dao.MapNameDao;
-import gw2.api.webapp.json.api.domain.MapName;
+import gw2.api.webapp.model.MapName;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +28,8 @@ public class MapNameController {
 	
 	@RequestMapping(value = "/{lang}/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public MapName getMapNameById(@PathVariable String lang, @PathVariable String id) {
-		MapName result = dao.getMapNameById(lang, id);
+	public List<MapName> getMapNameById(@PathVariable String lang, @PathVariable String id) {
+		List<MapName> result = dao.getMapNameById(lang, id);
 		return result;
 	}
 }

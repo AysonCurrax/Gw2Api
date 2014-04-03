@@ -11,7 +11,7 @@ import org.codehaus.jackson.type.TypeReference;
 import org.springframework.web.client.RestTemplate;
 
 import gw2.api.webapp.json.api.dao.EventDao;
-import gw2.api.webapp.json.api.domain.Event;
+import gw2.api.webapp.model.Event;
 
 public class EventDaoImpl implements EventDao{
 
@@ -29,11 +29,11 @@ public class EventDaoImpl implements EventDao{
 		return events;
 	}
 	
-	public Event getEventByWorldAndMapAndEvent(int worldId, int mapId, String eventId) {
+	public List<Event> getEventByWorldAndMapAndEvent(int worldId, int mapId, String eventId) {
 		List<Event> events = new ArrayList<Event>();
 		String params = "?world_id=" + worldId + "&map_id=" + mapId + "&event_id=" + eventId;
 		events = sendRequest(params);
-		return events.get(0);
+		return events;
 	}
 	
 	public List<Event> sendRequest(String params) {
